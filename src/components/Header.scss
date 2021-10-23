@@ -1,0 +1,32 @@
+header {
+  padding: 24px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      font-size: 22px;
+      text-decoration: none;
+      color: unset;
+      font-weight: 700;
+    }
+    label {
+      font-weight: 600;
+      cursor: pointer;
+      input {
+        display: none;
+      }
+      i {
+        margin-right: 0.3rem;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 48px 0;
+  }
+}

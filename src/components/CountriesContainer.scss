@@ -1,0 +1,56 @@
+.CountriesContainer {
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 66px;
+    a {
+      text-decoration: none;
+      color: unset;
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    &__content {
+      padding: 26px 22px;
+      h4 {
+        margin-bottom: 24px;
+        font-size: 20px;
+      }
+      p {
+        margin-bottom: 8px;
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .CountriesContainer {
+    .wrapper {
+      grid-template-columns: repeat(2, 1fr);
+      .card {
+        &__image {
+          min-height: 300px !important;
+          background-size: contain;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .CountriesContainer {
+    .wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+}
