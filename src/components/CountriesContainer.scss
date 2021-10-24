@@ -20,8 +20,12 @@
 
     &__content {
       padding: 26px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
       h4 {
-        margin-bottom: 24px;
+        margin-bottom: auto;
         font-size: 20px;
       }
       p {
