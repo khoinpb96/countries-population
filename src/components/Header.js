@@ -1,11 +1,18 @@
 import "./Header.scss";
 import { Link } from "react-router-dom";
 
-export default function Header({ setDarkMode, darkMode }) {
+export default function Header({ setDarkMode, darkMode, setUrl }) {
   return (
     <header>
       <div className="wrapper">
-        <Link to="/">Where in the world?</Link>
+        <Link
+          to="/"
+          onClick={() => {
+            setUrl(`https://restcountries.com/v2/all`);
+          }}
+        >
+          Where in the world?
+        </Link>
         <label htmlFor="darkModeBtn">
           <input
             type="checkbox"

@@ -7,8 +7,9 @@ import CountryPage from "./pages/CountryPage";
 
 export default function App() {
   const [renderData, setRenderData] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
   const [region, setRegion] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
+  const [inputValid, setInputValid] = useState(true);
 
   const [url, setUrl] = useState("https://restcountries.com/v2/all");
 
@@ -16,9 +17,8 @@ export default function App() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setRenderData(data);
-      })
-      .catch((err) => console.log(err));
+        data.status !== 404 ? setRenderData(data) : setInputValid(false);
+      });
   }, [url]);
 
   useEffect(() => {
@@ -32,10 +32,15 @@ export default function App() {
   return (
     <Router>
       <main className={darkMode ? "dark-theme" : ""}>
-        <Header setDarkMode={setDarkMode} darkMode={darkMode} />
+        <Header setDarkMode={setDarkMode} darkMode={darkMode} setUrl={setUrl} />
         <Switch>
           <Route exact path="/">
-            <Filter setUrl={setUrl} regionList={[...new Set(region)]} />
+            <Filter
+              setUrl={setUrl}
+              regionList={[...new Set(region)]}
+              inputValid={inputValid}
+              setInputValid={setInputValid}
+            />
             {renderData ? (
               <CountriesContainer renderData={renderData} />
             ) : (

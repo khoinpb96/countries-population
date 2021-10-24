@@ -1,13 +1,19 @@
 import { useState } from "react";
 import "./Filter.scss";
 
-export default function Filter({ setUrl, regionList }) {
+export default function Filter({
+  setUrl,
+  regionList,
+  inputValid,
+  setInputValid,
+}) {
   const [inputVal, setInputVal] = useState("");
 
   function formSubmitHandler(e) {
-    if (!inputVal) return;
     e.preventDefault();
-    setUrl(`https://restcountries.com/v2/name/${inputVal}`);
+    inputVal
+      ? setUrl(`https://restcountries.com/v2/name/${inputVal}`)
+      : setUrl(`https://restcountries.com/v2/all`);
   }
 
   function filterByRegion(continent) {
@@ -25,7 +31,13 @@ export default function Filter({ setUrl, regionList }) {
             id=""
             placeholder="Search for a country..."
             value={inputVal}
+            style={
+              inputValid
+                ? { border: "transparent 1px solid" }
+                : { border: "red 1px solid" }
+            }
             onChange={(e) => {
+              setInputValid(true);
               setInputVal(e.target.value);
             }}
           />

@@ -1,7 +1,6 @@
 import "./CountryPage.scss";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 export default function CountryPage({ renderData }) {
   let history = useHistory();
